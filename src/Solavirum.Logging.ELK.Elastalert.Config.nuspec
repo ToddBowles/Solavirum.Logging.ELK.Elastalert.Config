@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Solavirum.Logging.ELK.Elastalert.Config</id>
+        <version>$version$</version>
+        <authors>Brad Bow, Todd Bowles</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Contains the Elastalert configuration, which is an alerting mechanism that sits on top of Elasticsearch</description>
+    </metadata>
+
+    <files>
+        <file src="**" target="\" />
+    </files>
+
+</package>

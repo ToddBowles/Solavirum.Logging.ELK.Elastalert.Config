@@ -1,0 +1,31 @@
+# (Required)
+# Rule name, must be unique
+name: Spike in 5xxs
+type: spike
+index: logstash-*
+
+timeframe:
+  seconds: @@ELASTALERT_CHECK_FREQUENCY_SECONDS@@
+
+spike_height: 2
+spike_type: up
+threshold_cur: @@general-spike-5xxs.yaml.threshold_cur@@
+
+filter:
+- query:
+    query_string:
+      query: "Status: [500 TO 599]"
+alert: "hipchat"
+alert_text_type: alert_text_only
+alert_text: |
+  <b>{0}</b>
+  <a href="@@KIBANA_URL@@">5xxs spiked {1}x. Was {2} in the last {3}, compared to {4} the previous {3}</a>
+hipchat_message_format: html
+hipchat_from: Elastalert
+hipchat_room_id: "@@HIPCHAT_ROOM@@"
+hipchat_auth_token: "@@HIPCHAT_TOKEN@@"
+alert_text_args:
+- name
+- spike_height
+- spike_count
+- reference_count
