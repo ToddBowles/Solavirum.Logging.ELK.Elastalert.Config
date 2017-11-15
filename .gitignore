@@ -1,0 +1,5 @@
+build-output
+src/logs/
+src/config/substitutions/Sensitive*
+runs/
+.vscode/tags
